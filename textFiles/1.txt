@@ -1,0 +1,53 @@
+tab = -
+vars = exp,pet,food,drink
+你好, I want to 买 a pet, but I won't have much time or 钱 to take care of it. Can you help me?
+1. 买狗！
+-Hmmm, a 狗？Okay..
+-pet := 狗
+2. 买猫！
+-A 猫？That seems like a 好 idea.
+-pet := 猫
+Okay, now I need to get something for it to 喝. There's 牛奶 and 水. Which should I get?
+1. 买水！
+-好, 水seems less expensive.
+-drink := 水
+2. 买牛奶！
+-I think cats like 牛奶..
+-drink := 牛奶
+--Do you like to 喝牛奶?
+--1. I love to 喝牛奶！
+---ok
+--2. 喝牛奶？Maybe if I were a 牛..
+---cool
+One more thing, I need to get something for it to 吃. Should I 买饭 or 买鱼？
+1. 饭很好！
+-food := 饭
+2. 鱼很好！
+-food := 鱼
+好, so I bought a ${pet}, some ${drink} for it to 喝, and some ${food} for it to 吃.
+1. 你觉得什么?
+-if pet == 猫 and drink != 牛奶 and food != 鱼:
+-I love my 猫！
+-exp := 30
+-if pet == 狗 and drink == 牛奶 and food == 鱼:
+-I like my 狗, but I don't quite have enough time or 钱. Especially while feeding it 牛奶 and 鱼.
+-exp := 5
+-if pet == 猫 and drink == 牛奶 and food == 鱼:
+-Hmmm..
+--My 猫 loves the 牛奶 and 鱼 and I love my 猫！But I don't quite have enough 钱 to sustain its habits..\nWill you give me some 钱？
+--1. I don't have 钱 for you!
+---Understandable..
+---exp := 20
+--2. Sure.
+---谢谢，thanks!
+---exp := 50
+-if pet == 狗 and drink != 牛奶 and food != 鱼:
+-It's a cool 狗, I just don't have much time for it..
+-exp := 20
+2. [blank]
+-[blank]
+Hey there, 你要做什么?
+1. 我不知道!
+-nice
+2. 我要爱你。
+-not nice

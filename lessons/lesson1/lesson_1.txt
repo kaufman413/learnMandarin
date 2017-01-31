@@ -1,0 +1,12 @@
+Text: In this lesson you will learn some basic words. Note that the word 吗 (ma) is put at the end of a statement in order to make it a question. For example "You like apples ma?" Also, verbs are not conjugated in Chinese. So, the word 是 (shì) is translated as "be" but can mean "is", "are", or "am".
+Points: 0
+Name: intro
+I,wǒ,我
+you,nǐ,你
+be,shì,是
+father,bāba,爸爸
+mother,māma,妈妈
+love,aì,爱
+not,bù,不
+?,ma,吗
+good,hǎo,好

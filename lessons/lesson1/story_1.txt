@@ -1,0 +1,57 @@
+tab = -
+vars = exp
+你好, we're going to play a game. You have to guess what I am. Ask me ANYTHING.
+1. 你是爸爸吗?
+-Ohhhh, so close.
+--But nope! 我不是爸爸。
+--1. 你是妈妈吗?
+---Yeah I thought you might ask that.
+--2. 你是我吗?
+---Hmm.. No, I doubt it.
+2. 你是妈妈吗?
+-Wow, super smart guess.
+--But actually, 我不是妈妈。
+--1. 你是我吗?
+---Hmm.. No, I doubt it.
+--2. 你是爸爸吗?
+---Wow, again such a super smart guess.
+Okay, one last chance to guess.
+1. 你不是妈妈 AND 你不是爸爸。
+-That's correct!
+--So what does that make me?
+--1. Yeah that sucks.. being a 妈妈 or a 爸爸 is the only way to live.
+---Wow, you're mean.
+--2. Cheer up! I'm also not a 妈妈 or a 爸爸. And it's great!
+---Wow, that makes me feel a lot better.
+2. 我爱你。
+-You were thinking it too?
+--But maybe we should come back to this when we know each other better.
+--1. 好啊, I guess you're right.
+---(好啊 just means okay. 好=good and 啊 is a "particle showing affirmation" according to google translate.)
+--2. 不好! 我爱你!
+---Okay, well that's enough of that.
+So now I just want to test you on a few words. What does 爱 mean?
+1. love
+-Nice!
+2. good
+-Not nice! But you'll get it next time.
+What does 是 mean?
+1. be
+-Nice!
+2. not
+-Not nice! But you'll get it next time.
+What does 我 mean?
+1. you
+-Not nice! But you'll get it next time.
+2. I
+-Nice!
+How do you write mom?
+1. 爸爸
+-Not nice! But you'll get it next time.
+2. 妈妈
+-Nice!
+Okay so usually I'll give you a different amount of points depending on how you did but since it's your first time..
+1. Cool.
+-exp := 50
+2. [blank]
+-[blank]

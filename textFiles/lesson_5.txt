@@ -1,0 +1,10 @@
+Text: In this lesson you will learn about drinks.
+Points: 100
+Name: none
+water,shuǐ,水
+alcohol,jiǔ,酒
+tea,chá,茶
+coffee,kāfēi,咖啡
+beer,píjiǔ,啤酒
+red wine,hóngjiǔ,红酒
+white wine,báijiǔ,白酒

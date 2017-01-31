@@ -1,0 +1,358 @@
+<!-- Source template: http://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_interior_design&stacked=h-->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'homepage/css/w3.css' %}">
+<link rel="stylesheet" href="{% static 'homepage/css/Poppins-font.css' %}">
+<script src="{% static 'homepage/js/jquery.js' %}" type="text/javascript"></script>
+<script src="{% static 'homepage/js/jquery.flip.js' %}" type="text/javascript"></script>
+<link href="{% static 'homepage/css/box_main.css' %}" type="text/css" rel="stylesheet"/>
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px; background-color: black;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+
+<style>
+
+    .questionsCard {
+    /*top: calc(var(--top_anchor) - 300px);*/
+    /*left: calc(var(--left_anchor) - 350px);*/
+    width: calc(var(--size_multiplier) * 85%);
+    height: calc(var(--size_multiplier) * 300px);
+    /*border-color: lightgrey;*/
+    /*border-style: solid;*/
+    border-radius: 5%;
+    font-size: 40px;
+    color: black;
+    background-color: darkgrey;
+    }
+
+    .text {
+    /*top: calc(var(--top_anchor) - 60px);*/
+    /*left: calc(var(--left_anchor) + 0px);*/
+    /*position: fixed;*/
+    border-style: solid;
+    border-color: black;
+    width: calc(var(--size_multiplier) * 85%);
+    height: calc(var(--size_multiplier) * 65px);
+    border-radius: 5%;
+    font-size: 24px;
+    background-color: lightgrey;
+    }
+</style>
+
+<script>
+
+    var basePoints = {{points}};
+
+    function ajaxPractice(amount) {
+        xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "ajaxPractice/{{username}}/"+amount, true);
+        xhttp.send();
+        basePoints += parseInt(amount);
+        document.getElementById("points").innerHTML = "Points = "+basePoints;
+    }
+
+
+
+</script>
+
+
+<body>
+
+<!-- Sidenav/menu -->
+<nav class="w3-sidenav w3-deep-purple w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold" id="mySidenav"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-padding-xlarge w3-hide-large w3-display-topleft w3-hover-white" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-32">
+        <b>Learn<br>Mandarin</b>
+    </h3>
+    <h3 id="points" class="w3-padding-8">
+        Points = {{points}}
+    </h3>
+  </div>
+  <a href="../../../main" onclick="w3_close()" class="w3-padding w3-hover-white">Home</a>
+  <a href="logoff" onclick="w3_close()" class="w3-padding w3-hover-white">Logout</a>
+  <!--a href="#learn" onclick="w3_close()" class="w3-padding w3-hover-white">Learn</a>
+  <a href="#review" onclick="w3_close()" class="w3-padding w3-hover-white">Review</a-->
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-deep-purple w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-btn w3-deep-purple w3-border w3-border-white w3-margin-right" onclick="w3_open()">☰</a>
+  <span>LEARN MANDARIN</span>
+</header>
+
+<!-- Overlay effect when opening sidenav on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+<!--div id="text" style="margin-top:100px; color:white;"><div id="-1">The message is: </div></div-->
+    <div class="w3-container" style="margin-top:80px" id="learn">
+        <div id="{{story.firstPrompt.promptId}}" class="questionsCard w3-row-padding w3-hover-deep-purple">
+            {{story.firstPrompt.promptText}}
+        </div>
+        <button onclick="next(1, '{{story.firstPrompt.promptId}}', 'firstPhase');" id="button1" class="text w3-hover-deep-purple">{{story.firstPrompt.option1}}</button>
+        <button onclick="next(2, '{{story.firstPrompt.promptId}}', 'firstPhase');" id="button2" class="text w3-hover-deep-purple">{{story.firstPrompt.option2}}</button>
+    </div>
+
+
+    <!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<!--div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="http://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div-->
+
+
+
+
+<script>
+
+
+
+    {% for var in vars %} var {{var}} = "";
+    {%endfor%}
+
+    //takes a key which is the variable to get or set
+    //getOrSet is whether the variable is being returned or set
+    //setTo is only used for set, which is the value to set the key/variable to
+    function hashmap(key, getOrSet, setTo) {
+        if(getOrSet == "get") {
+            {% for var in vars %}
+            if(key == "{{var}}") {
+                return {{var}};
+            }{% endfor %}
+        }
+        else if(getOrSet == "set") {
+            {% for var in vars %}
+            if(key == "{{var}}") {
+                {{var}} = setTo;
+            }{% endfor %}
+        }
+    }
+
+
+    function Response(option1or2, ifStatement, responseText, setVariable, previousPrompt, nextPrompt) {
+        this.option1or2 = option1or2;
+        this.ifStatement = ifStatement;
+        this.responseText = responseText;
+        this.setVariable = setVariable;
+        this.previousPrompt = previousPrompt;
+        this.nextPrompt = nextPrompt;
+    }
+
+    function Prompt(promptId, promptText, option1, option2) {
+        this.promptId = promptId;
+        this.promptText = promptText;
+        this.option1 = option1;
+        this.option2 = option2;
+    }
+
+    var prompts = [{% for prompt in prompts %} new Prompt("{{prompt.promptId}}", "{{prompt.promptText}}", "{{prompt.option1}}", "{{prompt.option2}}"),  {% endfor %}];
+    var responses = [ {% for response in responses %} new Response("{{response.option1or2}}", "{{response.ifStatement}}", "{{response.responseText}}", "{{response.setVariable}}", "{{response.previousPrompt.promptId}}", "{{response.nextPrompt.promptId}}"),  {% endfor %} ];
+
+
+    // changes the text to go to the next prompt
+    function next(buttonId, promptId, phase) {
+        var nextPrompt = "";
+        var promptDiv = document.getElementById(promptId);
+        var b1 = document.getElementById("button1");
+        var b2 = document.getElementById("button2");
+
+
+        //this part finds the appropriate response and executes it
+        if(phase == "firstPhase") {
+            for(var i=0; i<responses.length; i++) {
+            var rtc = responses[i]; //response to check
+            if (rtc.option1or2 == buttonId && rtc.previousPrompt == promptId && executeIfStatement(rtc.ifStatement) ) {
+                nextPrompt = rtc.nextPrompt;
+
+                if(rtc.setVariable.length > 3) {
+                    setVariable(rtc.setVariable);
+                }
+
+                if(rtc.responseText.length < 1 ) {
+                    phase = 'secondPhase';
+                    buttonId = nextPrompt;
+                }
+                else {
+                    promptDiv.innerHTML = rtc.responseText;
+                    b1.innerHTML = "next ->";
+                    b1.onclick = function() {next(nextPrompt, promptId, 'secondPhase')}
+                    b2.style.visibility = 'hidden';
+                    break;
+                }
+
+            }
+        }
+        }
+
+
+
+        //this part finds the appropriate prompt and executes it
+        if(phase == "secondPhase") {
+            nextPrompt = buttonId;
+            var noPromptFound = true;
+            for(var i=0; i<prompts.length; i++) {
+                var ptc = prompts[i]; //prompt to check
+                if(ptc.promptId == nextPrompt) {
+                    noPromptFound = false;
+                    promptDiv.id = nextPrompt;
+                    promptDiv.innerHTML = checkTextForVariables(ptc.promptText);
+                    b1.innerHTML = ptc.option1;
+                    b1.onclick = function() {next(1, ptc.promptId, 'firstPhase');};
+                    if(ptc.option2 == "2. [blank]") {
+                        b2.style.visibility = 'hidden';
+                        var donothing = "donothing";
+                    }
+                    else {
+                        b2.style.visibility = 'visible';
+                        b2.innerHTML = ptc.option2;
+                        b2.onclick = function() {next(2, ptc.promptId, 'firstPhase');};
+                    }
+                    break;
+                }
+            }
+            //then we're at the end
+            if(noPromptFound) {
+                promptDiv.innerHTML = "Congratulations, you finished!<br> + "+exp+"exp";
+                b1.innerHTML = "go home";
+                ajaxPractice(exp);
+                b1.onclick = function() {document.location = "/main";};
+            }
+        }
+
+
+
+        //alert(promptId);
+        //document.getElementById("button1").onclick = function() {next(5,'2');};
+    }
+
+    // takes
+    function executeIfStatement(ifStatement) {
+        if(ifStatement.length < 3) {
+            return true;
+        }
+        ifStatement = ifStatement.substring(3); //take off the if part
+        //take off the : at the end if it is there
+        if(ifStatement.charAt(ifStatement.length-1) == ":") {
+            ifStatement = ifStatement.substring(0, ifStatement.length-1);
+        }
+        var ifStatements = ifStatement.split("and");
+        for(var i=0; i<ifStatements.length; i++) {
+            var ifment = ifStatements[i];
+            if(ifment.charAt(0) == " ") { ifment = ifment.substring(1);}
+            if(ifment.charAt(ifment.length-1) == " ") { ifment = ifment.substring(0,ifment.length-1)}
+            ifment = ifment.split(" ");
+            var key = ifment[0];
+            var value = ifment[2];
+            if(ifment[1] == "==") {
+                if(value != hashmap(key, "get", null)) {
+                    return false;
+                }
+            }
+            else if(ifment[1] == "!=") {
+                if(value == hashmap(key, "get", null)) {
+                    return false;
+                }
+            }
+
+        }
+
+        return true;
+    }
+
+    //setVar should be in the form food := 鱼
+    function setVariable(setVar) {
+        setVar = setVar.split(" ");
+        //alert("hi" + setVar[0] + setVar[2]);
+        //alert("hi" + setVar[0] + setVar[2]);
+        hashmap(setVar[0], "set", setVar[2]);
+    }
+
+    function checkTextForVariables(text) {
+        var value = "";
+        for(var i=0; i<text.length-1; i++) {
+            if(text.charAt(i) == "$" && text.charAt(i+1) == "{") {
+                var variable = "";
+                for(var j=i+2; j<text.length; j++) {
+                    if(text.charAt(j) == "}") {
+                        break;
+                    }
+                    variable += text.charAt(j);
+                }
+                value = hashmap(variable, "get", null);
+                break;
+            }
+        }
+        if(value == "") {return text;}
+        else {
+            text = text.substring(0,i) + value + text.substring(j+1, text.length);
+            return checkTextForVariables(text);
+        }
+    }
+
+
+</script>
+
+
+
+
+<!--script>
+    var inhtml = "";
+    var textToAdd = ["Hello","there,","what's up?"];
+    var index = 0;
+    function next(e) {
+        var e = e || event;
+
+        var currentText = document.getElementById("text").innerHTML;
+        var newText = currentText + "<div style='display: inline;' id='" + index +"'>" + textToAdd[index] + "</div> ";
+
+        $("#text").append("<div style='display: none;' id='" + index +"'>" + textToAdd[index] + "</div> ");
+        $("#"+index).hide();
+        $("#"+index).slideDown('slow');
+
+        index += 1;
+    }
+
+
+</script-->
+
+
+
+
+<script>
+// Script to open and close sidenav
+function w3_open() {
+    document.getElementById("mySidenav").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+    document.getElementById("mySidenav").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+
+
+</body>
+</html>

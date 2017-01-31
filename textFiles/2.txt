@@ -1,0 +1,60 @@
+tab = -
+vars = loc,santa,emotion,cool,exp
+You enter a small room. There is a glass of milk and a cookie. What do you do?
+1. Crush the cookie with your sheer might. Pour the milk on your face.
+-You’re wet. Very wet. And now you feel sad too.
+-emotion := sad
+--There’s a refrigerator and an oven. Which one would you like to curl up in?
+--1. The refrigerator.
+---You’re in the refrigerator.
+---loc := refrigerator
+----You’re still in the refrigerator.
+----1. Stay in the refrigerator.
+-----Okay.. 
+----2. Get out of the refrigerator.
+-----Cool.
+-----loc := notrefrigerator 
+------So now there are two doors. A door with a happy face and one with a sad face.
+------1. Go through happy face.
+-------You feel happy.
+-------emotion := happy
+------2. Go through sad face. 
+-------You feel sad.
+-------emotion := sad
+--2. Crush both the oven and the refrigerator with your sheer might.
+---Hey! You’re pretty cool.
+---cool := yes
+2. Eat the cookie. Drink the milk.
+-You feel like santa claus.
+-santa := yes
+--So now there are two doors. A door with a happy face and one with a sad face.
+--1. Go through happy face.
+---You feel happy.
+---emotion := happy
+--2. Go through sad face.
+---You feel sad.
+---emotion := sad
+Now what happens is that you pass out.
+1. Cool.
+-if loc == refrigerator:
+-Remember when you stayed in the refrigerator? You’re still in the refrigerator, good job!
+-exp := 100
+-if santa == yes:
+-Remember when you ate the cookie and drank the milk? And then I said you feel like santa claus? You are santa claus.
+-exp := 50
+-if cool == yes:
+-I remember when you crushed the oven and refrigerator with your sheer might. That was cool. You are cool.
+-exp := 20
+--How did you like your adventure?
+--1. Pretty stupid and not fun.
+---if emotion == sad:
+---Remember from before, you feel sad.
+---if emotion == happy:
+---Remember from before, you feel happy.
+--2. Not stupid and very fun.
+---if emotion == sad:
+---Remember from before, you feel sad.
+---if emotion == happy:
+---Remember from before, you feel happy.
+2. [blank]
+-[blank]

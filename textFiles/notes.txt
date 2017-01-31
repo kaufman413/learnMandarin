@@ -1,0 +1,13 @@
+admin credentials
+username: noahkaufman
+email: kaufman413@gmail.com
+password: korrektimus321
+
+
+To do next:
+create a user profile
+	username
+	experience
+	wordsExposedTo (just make this a text field that can be converted to a dict)
+	list of lessons and level on them (
+

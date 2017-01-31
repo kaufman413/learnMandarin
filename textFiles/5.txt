@@ -1,0 +1,57 @@
+tab = -
+vars = exp,alcoholic,drink,inRestaurant
+你好. You are in a restaurant. You're with someone on a date.
+1. Say "你好" to your date.
+-They smile awkwardly back.
+-alcoholic := no
+2. Yell "我爱喝酒!" at your date.
+-They yell "我爱喝水" back at you.
+-alcoholic := yes
+The server comes to you. They ask, 你要喝什么? How do you respond?
+1. 我要喝茶。
+-The server says "好".
+-drink := 茶
+2. 我不要喝茶。
+-Uhhh.. okay?
+--So what do you want?
+--1. 我不知道 :(
+---The server looks confused and leaves after your date orders 水.
+---drink := 水
+----The server comes back with 水 for both of you.
+----1. Say "谢谢"
+-----You have a nice date talking about what you each like to 喝.
+----2. Proclaim loudly "I hate 水!". Then run out of the restaurant.
+-----inRestaurant := no
+--2. 我要红酒。
+---drink := 红酒
+----The server brings you 白酒.
+----1. Say "Actually, I wanted 红酒"
+-----Oops sorry, I'll bring you some 红酒.
+----2. Say nothing and curse the server under your breath.
+-----The server looks at you with the fiery anger of 1000 suns.
+------"What did you say?" they ask.
+------1. Start crying and apologize.
+-------Your date looks very scared.
+------2. Splash the 白酒 in the server's face.
+-------Your date gives you a high-five.
+So, that was a nice date, wasn't it?
+1. Yes.
+-if drink == 茶:
+-All you did was drink tea..
+-exp := 20
+-if drink != 茶 and inRestaurant == no:
+-Yeah until you ran out of the restaurant I guess.
+-exp := 25
+-if drink != 茶 and inRestaurant != no:
+-Yeah, I guess it was.
+-exp := 100
+2. No.
+-if drink == 茶:
+-Correct, all you did was drink tea..
+-exp := 20
+-if drink != 茶 and inRestaurant == no:
+-Correct, because you left the restaurant early.
+-exp := 25
+-if drink != 茶 and inRestaurant != no:
+-Yeah, that's one way to look at it.
+-exp := 50

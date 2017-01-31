@@ -1,0 +1,26 @@
+<!DICTYPE html>
+<html>
+<body>
+
+<form action="registerUser" method="post">
+{% csrf_token %}
+ {% if error %}
+ <p style="color:red;">*{{error}}</p>
+ {% endif %}
+ Username:
+<input type="text" name="username" maxlength="10"><br>
+Password:
+<input type="password" name="password" maxlength="100"><br>
+ Retype Password:
+ <input type="password" name="rpassword" maxlength="100"><br>
+Email:
+<input type="text" name="email" maxlength="100">
+<input type="submit" value="Submit">
+</form>
+
+
+</body>
+
+
+
+</html>

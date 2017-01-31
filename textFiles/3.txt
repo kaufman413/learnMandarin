@@ -1,0 +1,28 @@
+P1 
+You’re going on a trip, where do you want to go?
+O1 China!
+O2 Mexico!
+R1
+var: country = mexico
+text: You’re going to China!
+nextPrompt: 2
+REND
+R2
+var: country = china
+text: You’re going to Mexico!
+nextPrompt: 3
+REND
+PEND
+
+P2 So, you’re in China, now what?
+O1 Go to South Africa!
+O2 Go on a bike ride.
+R1
+text: okay..
+nextPrompt: 4
+REND
+R2
+text: You’re biking and you fall in the water.
+
+REND
+
